@@ -1,0 +1,38 @@
+nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background-color: rgb(71, 71, 71);
+  display: flex;
+  gap: 2rem;
+}
+
+li {
+  list-style-type: none;
+}
+
+li a img {
+  width: 60px;
+  height: 60px;
+}
+
+a {
+  color: black;
+}
+a:hover {
+  color: rgb(182, 182, 0);
+}
+
+.leftUl {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 2rem;
+  margin-left: 1rem;
+}
+
+.rightUl {
+  display: flex;
+  align-items: center;
+}
