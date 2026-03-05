@@ -2,34 +2,34 @@ import "/src/styles/Navbar.css";
 
 export function Navbar() {
   return (
-    <header>
-      <nav>
-        <ul className="leftUl">
-          <li>
-            <a href="">
-              <img src="/src/assets/Pokeball-PNG.png" alt="logo-pokemon"></img>
-            </a>
-          </li>
-          <li>
-            <a href="">HOME </a>
-          </li>
-          <li>
-            <a href="">pokedex</a>
-          </li>
-          <li>
-            <a href="">history</a>
-          </li>
-        </ul>
-
-        <ul className="rightUl">
-          <li>
-            <a href="">about</a>
-          </li>
-          <li>
-            <a href="">don't click me</a>
-          </li>
+    <>
+      <nav className="navbar">
+        <a href="https://www.youtube.com/watch?v=_9HHju9_hMM" target="_blank">
+          <img src="/src/assets/Pokeball-PNG.png" alt="logo-pokemon"></img>
+        </a>
+        <ul className="menuHeader">
+          <div className="navBarDiv">
+            <li>
+              <a href="">Home </a>
+            </li>
+            <li>
+              <a href="">API</a>
+            </li>
+            <li>
+              <a href="">Pokedex</a>
+            </li>
+          </div>
+          <div className="navBarDiv">
+            <li>
+              <a href="">About</a>
+            </li>
+          </div>
         </ul>
       </nav>
-    </header>
+
+      <div className="title">
+        <h1>Pokedex Info</h1>
+      </div>
+    </>
   );
 }
