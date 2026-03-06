@@ -18,3 +18,29 @@ body {
   display: flex;
   flex-direction: column;
 }
+
+ul {
+  margin: 0;
+  padding: 0;
+}
+
+ul li {
+  list-style: none;
+}
+
+.pokemonForm {
+  margin-top: 2rem;
+}
+
+.gridCardsPokemon {
+  display: grid;
+  grid-template-columns: repeat(4, 130px);
+  gap: 4rem;
+  margin-top: 3rem;
+}
+
+.mainBody {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}

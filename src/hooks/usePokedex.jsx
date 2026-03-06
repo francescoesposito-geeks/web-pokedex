@@ -6,9 +6,8 @@ export function usePokedex() {
   const [error, setError] = useState(null);
 
   useEffect(() => {
-    console.log("useEffect partito");
     async function fetchData() {
-      let url = "https://pokeapi.co/api/v2/pokemon/";
+      let url = "https://pokeapi.co/api/v2/pokemon/?limit=1350";
 
       try {
         const response = await fetch(url);
@@ -18,8 +17,9 @@ export function usePokedex() {
         }
 
         const data = await response.json();
-        console.log("data ", data);
+
         setPokemon(data.results);
+        console.log(data.results);
       } catch (error) {
         setError(error);
         console.error(error.message);

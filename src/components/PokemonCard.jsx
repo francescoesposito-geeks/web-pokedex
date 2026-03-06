@@ -7,9 +7,6 @@ export function PokemonCard({ pokemon }) {
             <b>nome: </b>
             {pokemon.name}
           </li>
-          <li></li>
-          <li></li>
-          <li></li>
         </ul>
       </li>
     </div>

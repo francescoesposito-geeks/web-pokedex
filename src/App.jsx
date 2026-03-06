@@ -7,7 +7,9 @@ function App() {
   return (
     <>
       <Navbar />
-      <DataMainControll />
+      <div className="mainBody">
+        <DataMainControll />
+      </div>
       <Footer />
     </>
   );
