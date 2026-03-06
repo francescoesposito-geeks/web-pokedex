@@ -1,11 +1,12 @@
 import { useEffect, useState } from "react";
 
 export function usePokedex() {
-  const [pokemon, setPokemon] = useState({});
+  const [pokemon, setPokemon] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
   useEffect(() => {
+    console.log("useEffect partito");
     async function fetchData() {
       let url = "https://pokeapi.co/api/v2/pokemon/";
 
@@ -17,7 +18,8 @@ export function usePokedex() {
         }
 
         const data = await response.json();
-        setPokemon(data);
+        console.log("data ", data);
+        setPokemon(data.results);
       } catch (error) {
         setError(error);
         console.error(error.message);

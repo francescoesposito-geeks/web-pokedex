@@ -1,6 +1,6 @@
 import { useRef } from "react";
 
-export function FormPokedex() {
+export function FormPokedex({ onSubmit }) {
   const inputRef = useRef();
 
   return (
@@ -8,7 +8,7 @@ export function FormPokedex() {
       <label>Pokemon name:</label>
       <div>
         <input ref={inputRef} type="text" placeholder="insert name" />
-        <button>search</button>
+        <button onClick={onSubmit}>search</button>
       </div>
     </div>
   );
