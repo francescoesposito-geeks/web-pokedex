@@ -1,30 +1,33 @@
 import { useState } from "react";
 
-export function PokemonCard({ pokemon }) {
+export function PokemonCard({ pokemon, onAdd }) {
   const [detail, setDetail] = useState(null);
   const [isOpen, setOpen] = useState(false);
 
   async function handleCardClick() {
-    console.log("sono qua", pokemon.url);
     if (detail === null) {
       try {
         const response = await fetch(pokemon.url);
         const data = await response.json();
-        console.log(data);
+
         setDetail(data);
-      } catch (error) {}
+      } catch (error) {
+        console.error(error.message);
+      }
     }
     setOpen(!isOpen);
   }
 
   return (
-    <div className="pokemonCard" onClick={handleCardClick}>
-      <li>
+    <div className="pokemonCard">
+      <li key={pokemon.id}>
         <ul>
-          <li>
-            <b>nome: </b>
-            {pokemon.name}
-          </li>
+          <div onClick={handleCardClick}>
+            <li>
+              <b>nome: </b>
+              {pokemon.name}
+            </li>
+          </div>
           {isOpen && (
             <>
               <li>
@@ -39,6 +42,9 @@ export function PokemonCard({ pokemon }) {
               </li>
               <li>
                 <img src={detail.sprites.front_default} alt="image-pokemon" />
+              </li>
+              <li>
+                <button onClick={onAdd}>+</button>
               </li>
             </>
           )}

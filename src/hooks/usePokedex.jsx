@@ -7,7 +7,7 @@ export function usePokedex() {
 
   useEffect(() => {
     async function fetchData() {
-      let url = "https://pokeapi.co/api/v2/pokemon/?limit=1350";
+      let url = "https://pokeapi.co/api/v2/pokemon/?limit=200";
 
       try {
         const response = await fetch(url);
@@ -19,7 +19,6 @@ export function usePokedex() {
         const data = await response.json();
 
         setPokemon(data.results);
-        console.log(data.results);
       } catch (error) {
         setError(error);
         console.error(error.message);

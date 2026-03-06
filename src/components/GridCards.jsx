@@ -5,7 +5,7 @@ export function GridCards({ pokemonData }) {
     <>
       <ul className="gridCardsPokemon">
         {pokemonData.map((pk) => {
-          return <PokemonCard pokemon={pk} />;
+          return <PokemonCard key={pk.name} pokemon={pk} />;
         })}
       </ul>
     </>
