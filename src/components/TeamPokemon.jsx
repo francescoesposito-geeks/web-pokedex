@@ -1,3 +1,5 @@
+import { PokemonCard } from "./PokemonCard";
+
 export function TeamPokemon({ pokemonArray }) {
   return (
     <>

@@ -31,7 +31,12 @@ export function DataMainControll() {
     setInputForm("");
   }
 
-  function addPokemonToTeam() {}
+  function addPokemonToTeam(pk) {
+    console.log("ce l'hai fatta tigre");
+    setTeamPokemon((prev) => {
+      return [...prev, pk];
+    });
+  }
 
   return (
     <>
@@ -40,7 +45,7 @@ export function DataMainControll() {
         valueInput={inputForm}
         onReset={resetForm}
       />
-      <GridCards pokemonData={filteresArrayPokemon} />
+      <GridCards pokemonData={filteresArrayPokemon} add={addPokemonToTeam} />
       <TeamPokemon pokemonArray={teamPokemon} />
     </>
   );
