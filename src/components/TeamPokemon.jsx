@@ -1,15 +1,16 @@
-import { PokemonCard } from "./PokemonCard";
+import { TeamPkCard } from "./TeamPkCard";
 
 export function TeamPokemon({ pokemonArray }) {
+  console.log("pokemon array team: ", pokemonArray);
   return (
     <>
       <div className="title second-title">
         <h2>TEAM POKEMON</h2>
       </div>
       <ul className="gridCardsPokemon">
-        {pokemonArray.map((pk) => {
-          return <PokemonCard key={pk.name} pokemon={pk} />;
-        })}
+        {pokemonArray.map((pk) => (
+          <TeamPkCard key={pk.name} pokemon={pk} />
+        ))}
       </ul>
     </>
   );
