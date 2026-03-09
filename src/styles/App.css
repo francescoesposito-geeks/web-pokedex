@@ -7,14 +7,14 @@
   margin: 0;
   box-sizing: border-box;
 }
-main {
+/* main {
   flex: 1;
-}
+} */
 body {
   background-color: #bf0000;
   margin: 0;
   padding: 0;
-  min-height: 100vh;
+  /* min-height: 100vh; */
   display: flex;
   flex-direction: column;
 }
@@ -29,13 +29,31 @@ ul li {
 }
 
 .pokemonForm {
+  display: flex;
+  flex-direction: column;
   margin-top: 2rem;
+  background-color: #e4e4e4;
+  width: 50%;
+  padding: 1rem;
+  border-radius: 20px;
+  border: 3px #000000 outset;
+}
+
+.labelForm {
+  margin-top: 0.5rem;
+  margin-bottom: 1rem;
+}
+
+.inputAndBottonForm {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
 }
 
 .gridCardsPokemon {
   display: grid;
-  grid-template-columns: repeat(4, 130px);
-  gap: 50px 60px;
+  grid-template-columns: repeat(3, 130px);
+  gap: 50px 150px;
   margin-top: 3rem;
 }
 
@@ -45,9 +63,20 @@ ul li {
   align-items: center;
 }
 
+.inputForm {
+  border: black 2px solid;
+  border-radius: 10px;
+  width: 70%;
+  text-align: center;
+}
+
 div button {
   background-color: #3c3b3b;
   color: white;
+}
+
+.formBotton {
+  border-radius: 50px;
 }
 
 .second-title {
@@ -62,7 +91,7 @@ div button {
 }
 
 .teamPokemonCard {
-  background-color: #e4e4e4;
+  background-color: #ededed;
   border: 2px solid #3c3b3b;
   border-radius: 10%;
   padding: 1rem;
@@ -79,4 +108,20 @@ ul li button {
 
 .cardButton {
   margin-left: 9rem;
+}
+
+.pokemonCard {
+  /* background-color: #ededed;
+  border: 2px solid #3c3b3b;
+  border-radius: 10%;
+  padding: 1rem; */
+}
+.nomePokemonCard {
+  background-color: #ededed;
+
+  padding: 0.25rem;
+}
+
+.cardIsOpen {
+  background-color: #ededed;
 }

@@ -1,9 +1,10 @@
 export function FormPokedex({ onSubmit, valueInput, onReset }) {
   return (
     <div className="pokemonForm">
-      <label>Pokemon name:</label>
-      <div>
+      <label className="labelForm">Pokemon name:</label>
+      <div className="inputAndBottonForm">
         <input
+          className="inputForm"
           value={valueInput}
           onChange={(e) => {
             onSubmit(e.target.value);
@@ -11,7 +12,10 @@ export function FormPokedex({ onSubmit, valueInput, onReset }) {
           type="text"
           placeholder="insert name"
         />
-        <button onClick={onReset}> reset </button>
+        <button className="formBotton" onClick={onReset}>
+          {" "}
+          reset{" "}
+        </button>
       </div>
     </div>
   );

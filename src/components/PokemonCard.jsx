@@ -21,14 +21,14 @@ export function PokemonCard({ pokemon, onAdd }) {
   return (
     <li className="pokemonCard">
       <ul>
-        <div onClick={handleCardClick}>
+        <div className="nomePokemonCard" onClick={handleCardClick}>
           <li>
             <b>nome: </b>
             {pokemon.name}
           </li>
         </div>
         {isOpen && (
-          <>
+          <div className="cardIsOpen">
             <li>
               <b>height: </b> {detail.height * 10 + "cm"}
             </li>
@@ -45,7 +45,7 @@ export function PokemonCard({ pokemon, onAdd }) {
             <li>
               <button onClick={() => onAdd(detail)}>+</button>
             </li>
-          </>
+          </div>
         )}
       </ul>
     </li>
