@@ -53,3 +53,30 @@ div button {
 .second-title {
   margin-top: 3rem;
 }
+
+.gridCardsTeamPokemon {
+  display: grid;
+  grid-template-columns: repeat(3, 200px);
+  gap: 50px 60px;
+  margin: 3rem 0;
+}
+
+.teamPokemonCard {
+  background-color: #e4e4e4;
+  border: 2px solid #3c3b3b;
+  border-radius: 10%;
+  padding: 1rem;
+}
+
+ul li button {
+  border-radius: 30%;
+}
+
+.ulTeamPokemonCard {
+  display: flex;
+  flex-direction: column;
+}
+
+.cardButton {
+  margin-left: 9rem;
+}

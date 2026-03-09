@@ -13,15 +13,17 @@ export function Navbar() {
               <a href="">Home </a>
             </li>
             <li>
-              <a href="">API</a>
+              <a href="https://pokeapi.co/">API</a>
             </li>
             <li>
-              <a href="">Pokedex</a>
+              <a href="https://wiki.pokemoncentral.it/Elenco_dei_Pok%C3%A9mon_secondo_il_Pok%C3%A9dex_Nazionale">
+                Pokedex
+              </a>
             </li>
           </div>
           <div className="navBarDiv">
             <li>
-              <a href="">About</a>
+              <a href="https://en.wikipedia.org/wiki/Pok%C3%A9mon">About</a>
             </li>
           </div>
         </ul>

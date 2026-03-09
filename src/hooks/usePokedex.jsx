@@ -7,7 +7,7 @@ export function usePokedex() {
 
   useEffect(() => {
     async function fetchData() {
-      let url = "https://pokeapi.co/api/v2/pokemon/?limit=155";
+      let url = "https://pokeapi.co/api/v2/pokemon/?limit=151";
 
       try {
         const response = await fetch(url);

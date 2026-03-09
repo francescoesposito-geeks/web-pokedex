@@ -6,7 +6,7 @@ export function TeamPokemon({ pokemonArray, removePk }) {
       <div className="title second-title">
         <h2>TEAM POKEMON</h2>
       </div>
-      <ul className="gridCardsPokemon">
+      <ul className="gridCardsTeamPokemon">
         {pokemonArray.map((pk) => (
           <TeamPkCard key={pk.idUnic} pokemon={pk} onRemove={removePk} />
         ))}
