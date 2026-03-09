@@ -11,7 +11,6 @@ export function FormPokedex({ onSubmit, valueInput, onReset }) {
           type="text"
           placeholder="insert name"
         />
-        <button onClick={() => onSubmit(valueInput)}>search</button>
         <button onClick={onReset}> reset </button>
       </div>
     </div>

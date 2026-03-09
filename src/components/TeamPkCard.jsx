@@ -1,41 +1,26 @@
-import { useState } from "react";
-
-export function TeamPkCard({ pokemon }) {
-  const [detail, setDetail] = useState(null);
+export function TeamPkCard({ pokemon, onRemove }) {
   console.log("sei qua ", pokemon);
 
-  async function handleCardClick() {
-    if (detail === null) {
-      try {
-        const response = await fetch(pokemon.url);
-        const data = await response.json();
-        console.log("qua i data ", data);
-        setDetail(data);
-      } catch (error) {
-        console.error(error.message);
-      }
-    }
-  }
   return (
-    <div className="pokemonCard" onClick={handleCardClick}>
-      <li key={pokemon.id}>
+    <div className="pokemonCard">
+      <li>
         <ul>
           <li>
             <b>nome: </b>
             {pokemon.name}
           </li>
           <li>
-            <b>height: </b> {detail.height}
+            <b>height: </b> {pokemon.height}
           </li>
           <li>
-            <b>weight: </b> {detail.weight}
+            <b>weight: </b> {pokemon.weight}
           </li>
           <li>
             <b>type: </b>
-            {detail.types[0].type.name}
+            {pokemon.types[0].type.name}
           </li>
           <li>
-            <img src={detail.sprites.front_default} alt="image-pokemon" />
+            <img src={pokemon.sprites.front_default} alt="image-pokemon" />
           </li>
           <li>
             <button onClick={() => onRemove(pokemon)}>-</button>

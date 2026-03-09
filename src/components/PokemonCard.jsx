@@ -44,7 +44,7 @@ export function PokemonCard({ pokemon, onAdd }) {
                 <img src={detail.sprites.front_default} alt="image-pokemon" />
               </li>
               <li>
-                <button onClick={() => onAdd(pokemon)}>+</button>
+                <button onClick={() => onAdd(detail)}>+</button>
               </li>
             </>
           )}
