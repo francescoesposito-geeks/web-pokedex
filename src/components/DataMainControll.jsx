@@ -34,7 +34,7 @@ export function DataMainControll() {
 
   function addPokemonToTeam(pk) {
     if (teamPokemon.length === 0) {
-      nextId.current === 1;
+      nextId.current = 1;
     } else {
       nextId.current++;
     }
