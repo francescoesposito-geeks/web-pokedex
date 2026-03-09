@@ -1,13 +1,14 @@
 import { usePokedex } from "../hooks/usePokedex";
 import { FormPokedex } from "./Formpokedex";
 import { GridCards } from "./gridCards";
-import { useMemo, useState } from "react";
+import { useMemo, useRef, useState } from "react";
 import { TeamPokemon } from "./TeamPokemon";
 
 export function DataMainControll() {
   const { pokemon, loading, error } = usePokedex();
   const [inputForm, setInputForm] = useState("");
   const [teamPokemon, setTeamPokemon] = useState([]);
+  let nextId = useRef(0);
 
   const filterArrayPokemon = useMemo(() => {
     let result = pokemon;
@@ -32,10 +33,20 @@ export function DataMainControll() {
   }
 
   function addPokemonToTeam(pk) {
-    setTeamPokemon((prev) => [...prev, pk]);
+    if (teamPokemon.length === 0) {
+      nextId.current === 1;
+    } else {
+      nextId.current++;
+    }
+
+    teamPokemon.length < 6
+      ? setTeamPokemon((prev) => [...prev, { ...pk, idUnic: nextId.current }])
+      : alert("max 6 Pokemon th the Team");
   }
-  function removePokemonToTheTeam() {
-    setTeamPokemon;
+  function removePokemonToTheTeam(pk) {
+    setTeamPokemon((prev) =>
+      prev.filter((pokemon) => pokemon.idUnic !== pk.idUnic),
+    );
   }
 
   return (

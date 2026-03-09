@@ -19,37 +19,35 @@ export function PokemonCard({ pokemon, onAdd }) {
   }
 
   return (
-    <div className="pokemonCard">
-      <li key={pokemon.id}>
-        <ul>
-          <div onClick={handleCardClick}>
+    <li className="pokemonCard">
+      <ul>
+        <div onClick={handleCardClick}>
+          <li>
+            <b>nome: </b>
+            {pokemon.name}
+          </li>
+        </div>
+        {isOpen && (
+          <>
             <li>
-              <b>nome: </b>
-              {pokemon.name}
+              <b>height: </b> {detail.height * 10 + "cm"}
             </li>
-          </div>
-          {isOpen && (
-            <>
-              <li>
-                <b>height: </b> {detail.height}
-              </li>
-              <li>
-                <b>weight: </b> {detail.weight}
-              </li>
-              <li>
-                <b>type: </b>
-                {detail.types[0].type.name}
-              </li>
-              <li>
-                <img src={detail.sprites.front_default} alt="image-pokemon" />
-              </li>
-              <li>
-                <button onClick={() => onAdd(detail)}>+</button>
-              </li>
-            </>
-          )}
-        </ul>
-      </li>
-    </div>
+            <li>
+              <b>weight: </b> {detail.weight / 10 + "kg"}
+            </li>
+            <li>
+              <b>type: </b>
+              {detail.types[0].type.name}
+            </li>
+            <li>
+              <img src={detail.sprites.front_default} alt="image-pokemon" />
+            </li>
+            <li>
+              <button onClick={() => onAdd(detail)}>+</button>
+            </li>
+          </>
+        )}
+      </ul>
+    </li>
   );
 }
