@@ -41,7 +41,7 @@ export function DataMainControll() {
 
     teamPokemon.length < 6
       ? setTeamPokemon((prev) => [...prev, { ...pk, idUnic: nextId.current }])
-      : alert("max 6 Pokemon th the Team");
+      : alert("max 6 Pokemon in the Team");
   }
   function removePokemonToTheTeam(pk) {
     setTeamPokemon((prev) =>

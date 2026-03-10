@@ -70,13 +70,10 @@ ul li {
   text-align: center;
 }
 
-div button {
-  background-color: #3c3b3b;
-  color: white;
-}
-
 .formBotton {
   border-radius: 50px;
+  background-color: #3c3b3b;
+  color: white;
 }
 
 .second-title {
@@ -98,7 +95,7 @@ div button {
 }
 
 ul li button {
-  border-radius: 30%;
+  border-radius: 5px;
 }
 
 .ulTeamPokemonCard {
@@ -117,11 +114,33 @@ ul li button {
   padding: 1rem; */
 }
 .nomePokemonCard {
-  background-color: #ededed;
-
+  background-color: #d5d4d4;
+  border: 1px solid black;
   padding: 0.25rem;
+  display: flex;
+  justify-content: space-between;
+  width: 10rem;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+}
+
+.expand {
+  height: 5px;
+  width: 5px;
 }
 
 .cardIsOpen {
   background-color: #ededed;
+  width: 10rem;
+  border-bottom-right-radius: 10px;
+  border-bottom-left-radius: 10px;
+  padding: 0.25rem;
+  border-left: 1px solid black;
+  border-right: 1px solid black;
+  border-bottom: 1px solid black;
+}
+
+.bottomPokemonCardButtons {
+  display: flex;
+  justify-content: space-evenly;
 }

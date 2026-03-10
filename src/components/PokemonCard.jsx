@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { Link } from "react-router";
 
 export function PokemonCard({ pokemon, onAdd }) {
   const [detail, setDetail] = useState(null);
@@ -26,6 +27,13 @@ export function PokemonCard({ pokemon, onAdd }) {
             <b>nome: </b>
             {pokemon.name}
           </li>
+          <button>
+            <img
+              className="expand"
+              src="/src/assets/icons8-expand-arrow-96.png"
+              alt="expand"
+            />
+          </button>
         </div>
         {isOpen && (
           <div className="cardIsOpen">
@@ -42,8 +50,9 @@ export function PokemonCard({ pokemon, onAdd }) {
             <li>
               <img src={detail.sprites.front_default} alt="image-pokemon" />
             </li>
-            <li>
+            <li className="bottomPokemonCardButtons">
               <button onClick={() => onAdd(detail)}>+</button>
+              <Link to="/about">info</Link>
             </li>
           </div>
         )}

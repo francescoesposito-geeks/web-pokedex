@@ -13,8 +13,7 @@ export function FormPokedex({ onSubmit, valueInput, onReset }) {
           placeholder="insert name"
         />
         <button className="formBotton" onClick={onReset}>
-          {" "}
-          reset{" "}
+          reset
         </button>
       </div>
     </div>
