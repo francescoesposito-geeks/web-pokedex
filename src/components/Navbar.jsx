@@ -1,4 +1,5 @@
 import "/src/styles/Navbar.css";
+import { Link, NavLink } from "react-router";
 
 export function Navbar() {
   return (
@@ -10,7 +11,7 @@ export function Navbar() {
         <ul className="menuHeader">
           <div className="navBarDiv">
             <li>
-              <a href="">Home </a>
+              <Link to="/">Home </Link>
             </li>
             <li>
               <a href="https://pokeapi.co/">API</a>
@@ -23,7 +24,7 @@ export function Navbar() {
           </div>
           <div className="navBarDiv">
             <li>
-              <a href="https://en.wikipedia.org/wiki/Pok%C3%A9mon">About</a>
+              <NavLink to="/about"> About</NavLink>
             </li>
           </div>
         </ul>

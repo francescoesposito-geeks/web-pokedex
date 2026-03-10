@@ -62,3 +62,8 @@ h1 {
   border: 3px #000000 groove;
   width: 100%;
 }
+
+nav a.active {
+  text-decoration: underline;
+  text-decoration-color: #b3a125;
+}
