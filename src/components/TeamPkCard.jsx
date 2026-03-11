@@ -15,7 +15,7 @@ export function TeamPkCard({ pokemon, onRemove }) {
           {pokemon.idUnic}
         </li>
         <li>
-          <b>nome: </b>
+          <b>name: </b>
           {pokemon.name}
         </li>
         <li>

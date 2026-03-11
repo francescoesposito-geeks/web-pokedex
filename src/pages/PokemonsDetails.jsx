@@ -1,8 +1,12 @@
+import { useParams } from "react-router";
+import { usePokemonDetails } from "../hooks/usePokemonDetails";
+import { PokemonCardDetails } from "../components/PokemonCardDetails";
+
 export function PokemonsDetails() {
-  return (
-    <div>
-      <h1>PROVA</h1>
-      <p>funziona tigre!!!!</p>
-    </div>
-  );
+  const params = useParams();
+  const { pokemon, loading } = usePokemonDetails(params.id);
+
+  console.log("dati pokemon fetchati", pokemon);
+
+  return <div>{!loading && <PokemonCardDetails pokemon={pokemon} />}</div>;
 }

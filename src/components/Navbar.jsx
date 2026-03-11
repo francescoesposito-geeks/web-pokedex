@@ -14,15 +14,10 @@ export function Navbar() {
               <Link to="/">Home </Link>
             </li>
             <li>
-              <a href="https://pokeapi.co/" target="_blank">
-                API
-              </a>
+              <a href="https://pokeapi.co/">API</a>
             </li>
             <li>
-              <a
-                href="https://wiki.pokemoncentral.it/Elenco_dei_Pok%C3%A9mon_secondo_il_Pok%C3%A9dex_Nazionale"
-                target="_blank"
-              >
+              <a href="https://wiki.pokemoncentral.it/Elenco_dei_Pok%C3%A9mon_secondo_il_Pok%C3%A9dex_Nazionale">
                 Pokedex
               </a>
             </li>

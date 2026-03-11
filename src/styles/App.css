@@ -144,3 +144,16 @@ ul li button {
   display: flex;
   justify-content: space-evenly;
 }
+
+.containerPokemonDetails {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 5rem;
+}
+
+.imgDetails {
+  width: 200px; /* o quanto vuoi */
+  height: 200px;
+  image-rendering: pixelated; /* mantiene la pixel art nitida senza sfocare */
+}
