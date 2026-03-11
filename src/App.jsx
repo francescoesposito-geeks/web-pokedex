@@ -12,7 +12,7 @@ function App() {
       <Navbar />
 
       <Routes>
-        <Route index element={<Home />} />
+        <Route path="/" element={<Home />} />
         <Route path="/about" element={<AboutPk />} />
         <Route path="/pokemon/:id" element={<PokemonsDetails />} />
       </Routes>

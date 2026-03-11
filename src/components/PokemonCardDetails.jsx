@@ -44,7 +44,7 @@ export function PokemonCardDetails({ pokemon }) {
           </p>
         </li>
         <li>
-          <b>moves:</b>
+          <b>moves: </b>
           {pokemon.moves[0].move.name}
         </li>
       </ul>

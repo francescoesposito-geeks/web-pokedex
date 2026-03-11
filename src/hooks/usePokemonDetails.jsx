@@ -8,7 +8,7 @@ export function usePokemonDetails(id) {
   useEffect(() => {
     async function fetchData() {
       let url = "https://pokeapi.co/api/v2/pokemon/" + id;
-      console.log("url fetch:", url);
+
       try {
         const response = await fetch(url);
 

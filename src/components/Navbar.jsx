@@ -11,7 +11,7 @@ export function Navbar() {
         <ul className="menuHeader">
           <div className="navBarDiv">
             <li>
-              <Link to="/">Home </Link>
+              <NavLink to="/">Home </NavLink>
             </li>
             <li>
               <a href="https://pokeapi.co/">API</a>
@@ -29,10 +29,6 @@ export function Navbar() {
           </div>
         </ul>
       </nav>
-
-      <div className="title">
-        <h1>Pokedex Info</h1>
-      </div>
     </>
   );
 }
