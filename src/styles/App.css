@@ -96,6 +96,11 @@ ul li button {
   border-radius: 5px;
 }
 
+ul li button:hover {
+  background-color: rgb(195, 195, 195);
+  cursor: pointer;
+}
+
 .ulTeamPokemonCard {
   display: flex;
   flex-direction: column;
@@ -117,8 +122,8 @@ ul li button {
 }
 
 .expand {
-  height: 5px;
-  width: 5px;
+  height: 10px;
+  width: 8px;
 }
 
 .cardIsOpen {
@@ -135,6 +140,7 @@ ul li button {
 .bottomPokemonCardButtons {
   display: flex;
   justify-content: space-evenly;
+  align-items: center;
 }
 
 .containerPokemonDetails {

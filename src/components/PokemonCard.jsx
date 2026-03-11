@@ -53,7 +53,9 @@ export function PokemonCard({ pokemon, onAdd }) {
             <li className="bottomPokemonCardButtons">
               <button onClick={() => onAdd(detail)}>+</button>
               {/* passo nell'url l'id del pokemon */}
-              <Link to={`/pokemon/${detail.id}`}>info</Link>
+              <Link className="backButton" to={`/pokemon/${detail.id}`}>
+                info
+              </Link>
             </li>
           </div>
         )}

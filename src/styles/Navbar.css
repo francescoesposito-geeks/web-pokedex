@@ -23,6 +23,7 @@ body {
   background: #3c3b3b;
   color: white;
   gap: 2rem;
+  border-bottom: 1.5px outset black;
 }
 
 .menuHeader {
