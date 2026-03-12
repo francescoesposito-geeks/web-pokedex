@@ -3,6 +3,7 @@ import { FormPokedex } from "./Formpokedex";
 import { GridCards } from "./gridCards";
 import { useMemo, useState } from "react";
 import { SkeletonHome } from "./SkeletonHome";
+import { ValueContext } from "/src/providers/ProvaContext";
 
 export function DataMainControll() {
   const { pokemon, loading, error } = usePokedex();
@@ -67,7 +68,12 @@ export function DataMainControll() {
       {loading ? (
         <SkeletonHome />
       ) : (
-        <GridCards pokemonData={filterArrayPokemon} addPk={addPokemonToTeam} />
+        <ValueContext value={{ addPokemonToTeam }}>
+          <GridCards
+            pokemonData={filterArrayPokemon}
+            addPk={addPokemonToTeam}
+          />
+        </ValueContext>
       )}
     </>
   );

@@ -1,4 +1,4 @@
-import { NavLink, useParams, Link } from "react-router";
+import { useParams, Link } from "react-router";
 import { usePokemonDetails } from "../hooks/usePokemonDetails";
 import { PokemonCardDetails } from "../components/PokemonCardDetails";
 

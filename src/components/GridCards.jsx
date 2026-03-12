@@ -1,11 +1,11 @@
 import { PokemonCard } from "./PokemonCard";
 
-export function GridCards({ pokemonData, addPk }) {
+export function GridCards({ pokemonData }) {
   return (
     <>
       <ul className="gridCardsPokemon">
         {pokemonData.map((pk, index) => {
-          return <PokemonCard key={index} pokemon={pk} onAdd={addPk} />;
+          return <PokemonCard key={index} pokemon={pk} />;
         })}
       </ul>
     </>

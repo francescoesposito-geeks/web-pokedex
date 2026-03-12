@@ -27,6 +27,6 @@ export function usePokemonDetails(id) {
     }
 
     fetchData();
-  }, [id]);
+  }, []);
   return { pokemon, loading, error };
 }

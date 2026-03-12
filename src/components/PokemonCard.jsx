@@ -1,9 +1,11 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { Link } from "react-router";
+import { ValueContext } from "/src/providers/ProvaContext";
 
-export function PokemonCard({ pokemon, onAdd }) {
+export function PokemonCard({ pokemon }) {
   const [detail, setDetail] = useState(null);
   const [isOpen, setOpen] = useState(false);
+  const { addPokemonToTeam } = useContext(ValueContext);
 
   async function handleCardClick() {
     if (detail === null) {
@@ -51,7 +53,7 @@ export function PokemonCard({ pokemon, onAdd }) {
               <img src={detail.sprites.front_default} alt="image-pokemon" />
             </li>
             <li className="bottomPokemonCardButtons">
-              <button onClick={() => onAdd(detail)}>+</button>
+              <button onClick={() => addPokemonToTeam(detail)}>+</button>
               {/* passo nell'url l'id del pokemon */}
               <Link className="backButton" to={`/pokemon/${detail.id}`}>
                 info
