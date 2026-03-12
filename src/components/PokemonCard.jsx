@@ -1,30 +1,23 @@
 import { useContext, useState } from "react";
 import { Link } from "react-router";
 import { ValueContext } from "/src/providers/ProvaContext";
+import { usePokemonOpenDetails } from "../hooks/usePokemonOpenDetail";
 
 export function PokemonCard({ pokemon }) {
-  const [detail, setDetail] = useState(null);
   const [isOpen, setOpen] = useState(false);
   const { addPokemonToTeam } = useContext(ValueContext);
+  const { detail, loading, error, fetchDetail } =
+    usePokemonOpenDetails(pokemon);
 
-  async function handleCardClick() {
-    if (detail === null) {
-      try {
-        const response = await fetch(pokemon.url);
-        const data = await response.json();
-
-        setDetail(data);
-      } catch (error) {
-        console.error(error.message);
-      }
-    }
+  function handleClick() {
+    fetchDetail(pokemon);
     setOpen(!isOpen);
   }
 
   return (
     <li className="pokemonCard">
       <ul>
-        <div className="nomePokemonCard" onClick={handleCardClick}>
+        <div className="nomePokemonCard" onClick={handleClick}>
           <li>
             <b>name: </b>
             {pokemon.name}
@@ -37,7 +30,7 @@ export function PokemonCard({ pokemon }) {
             />
           </button>
         </div>
-        {isOpen && (
+        {isOpen && !loading && (
           <div className="cardIsOpen">
             <li>
               <b>height: </b> {detail.height * 10 + "cm"}
