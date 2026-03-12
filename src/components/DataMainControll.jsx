@@ -1,14 +1,24 @@
 import { usePokedex } from "../hooks/usePokedex";
 import { FormPokedex } from "./Formpokedex";
 import { GridCards } from "./gridCards";
-import { useMemo, useRef, useState } from "react";
-import { TeamPokemon } from "./TeamPokemon";
+import { useMemo, useState } from "react";
+import { SkeletonHome } from "./SkeletonHome";
 
 export function DataMainControll() {
   const { pokemon, loading, error } = usePokedex();
   const [inputForm, setInputForm] = useState("");
-  const [teamPokemon, setTeamPokemon] = useState([]);
-  let nextId = useRef(0);
+
+  const saved = localStorage.getItem("teamPokemon");
+  let initialTeam;
+
+  let idSaved = Number(localStorage.getItem("id"));
+
+  if (saved) {
+    initialTeam = JSON.parse(saved);
+  } else {
+    initialTeam = [];
+  }
+  const [teamPokemon, setTeamPokemon] = useState(initialTeam);
 
   const filterArrayPokemon = useMemo(() => {
     let result = pokemon;
@@ -33,24 +43,18 @@ export function DataMainControll() {
   }
 
   function addPokemonToTeam(pk) {
-    if (teamPokemon.length === 0) {
-      nextId.current = 1;
-    } else {
-      nextId.current++;
-    }
-
+    idSaved++;
+    console.log("prima id", idSaved);
     if (teamPokemon.length < 6) {
-      setTeamPokemon((prev) => [...prev, { ...pk, idUnic: nextId.current }]);
-      console.log("nextid", nextId);
-      localStorage.setItem("team", JSON.stringify(pk));
+      const newTeam = [...teamPokemon, { ...pk, idUnic: idSaved }];
+      setTeamPokemon(newTeam);
+      localStorage.setItem("teamPokemon", JSON.stringify(newTeam));
+      localStorage.setItem("id", JSON.stringify(idSaved));
     } else {
       alert("max 6 Pokemon in the Team");
     }
-  }
-  function removePokemonToTheTeam(pk) {
-    setTeamPokemon((prev) =>
-      prev.filter((pokemon) => pokemon.idUnic !== pk.idUnic),
-    );
+
+    console.log("dopo id", idSaved);
   }
 
   return (
@@ -60,11 +64,11 @@ export function DataMainControll() {
         valueInput={inputForm}
         onReset={resetForm}
       />
-      <GridCards pokemonData={filterArrayPokemon} addPk={addPokemonToTeam} />
-      <TeamPokemon
-        pokemonArray={teamPokemon}
-        removePk={removePokemonToTheTeam}
-      />
+      {loading ? (
+        <SkeletonHome />
+      ) : (
+        <GridCards pokemonData={filterArrayPokemon} addPk={addPokemonToTeam} />
+      )}
     </>
   );
 }

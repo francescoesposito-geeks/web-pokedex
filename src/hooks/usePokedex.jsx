@@ -23,7 +23,9 @@ export function usePokedex() {
         setError(error);
         console.error(error.message);
       }
-      setLoading(false);
+      setTimeout(() => {
+        setLoading(false);
+      }, 2000);
     }
 
     fetchData();
