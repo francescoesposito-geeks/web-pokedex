@@ -1,5 +1,5 @@
 import "/src/styles/Navbar.css";
-import { Link, NavLink } from "react-router";
+import { NavLink } from "react-router";
 
 export function Navbar() {
   return (
@@ -20,6 +20,9 @@ export function Navbar() {
               <a href="https://wiki.pokemoncentral.it/Elenco_dei_Pok%C3%A9mon_secondo_il_Pok%C3%A9dex_Nazionale">
                 Pokedex
               </a>
+            </li>
+            <li>
+              <NavLink to="/pokemonTeam">Pokemon Team</NavLink>
             </li>
           </div>
           <div className="navBarDiv">

@@ -39,9 +39,13 @@ export function DataMainControll() {
       nextId.current++;
     }
 
-    teamPokemon.length < 6
-      ? setTeamPokemon((prev) => [...prev, { ...pk, idUnic: nextId.current }])
-      : alert("max 6 Pokemon in the Team");
+    if (teamPokemon.length < 6) {
+      setTeamPokemon((prev) => [...prev, { ...pk, idUnic: nextId.current }]);
+      console.log("nextid", nextId);
+      localStorage.setItem("team", JSON.stringify(pk));
+    } else {
+      alert("max 6 Pokemon in the Team");
+    }
   }
   function removePokemonToTheTeam(pk) {
     setTeamPokemon((prev) =>
