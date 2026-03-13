@@ -1,0 +1,25 @@
+.containerAbout {
+  display: flex;
+  flex-direction: column;
+}
+
+.subtitleAbout {
+  margin: 2rem auto;
+  border-bottom: 1px solid black;
+  color: rgb(21, 21, 21);
+}
+
+.aboutParag {
+  color: rgb(227, 227, 227);
+  margin: auto 10rem;
+}
+.listTech {
+  color: rgb(227, 227, 227);
+  display: flex;
+  flex-direction: column;
+}
+
+.linkTechnologies {
+  color: white;
+  text-decoration: none;
+}

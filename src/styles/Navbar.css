@@ -42,14 +42,13 @@ body {
   display: flex;
 }
 
-ul li a {
+.linkNavbar {
   color: white;
   text-align: center;
   text-decoration: none;
   padding: 1rem 3rem;
 }
-
-ul li a:hover {
+.linkNavbar:hover {
   background-color: #424242;
 }
 
@@ -62,6 +61,7 @@ h1 {
   background-color: #b3a125;
   border: 3px #000000 groove;
   width: 100%;
+  margin: 0;
 }
 
 nav a.active {

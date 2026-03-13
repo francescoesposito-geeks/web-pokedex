@@ -11,23 +11,34 @@ export function Navbar() {
         <ul className="menuHeader">
           <div className="navBarDiv">
             <li>
-              <NavLink to="/">Home </NavLink>
+              <NavLink className="linkNavbar" to="/">
+                Home
+              </NavLink>
             </li>
             <li>
-              <a href="https://pokeapi.co/">API</a>
+              <a className="linkNavbar" href="https://pokeapi.co/">
+                API
+              </a>
             </li>
             <li>
-              <a href="https://wiki.pokemoncentral.it/Elenco_dei_Pok%C3%A9mon_secondo_il_Pok%C3%A9dex_Nazionale">
+              <a
+                className="linkNavbar"
+                href="https://wiki.pokemoncentral.it/Elenco_dei_Pok%C3%A9mon_secondo_il_Pok%C3%A9dex_Nazionale"
+              >
                 Pokedex
               </a>
             </li>
             <li>
-              <NavLink to="/pokemonTeam">Pokemon Team</NavLink>
+              <NavLink className="linkNavbar" to="/pokemonTeam">
+                Pokemon Team
+              </NavLink>
             </li>
           </div>
           <div className="navBarDiv">
             <li>
-              <NavLink to="/about"> About</NavLink>
+              <NavLink className="linkNavbar" to="/about">
+                About
+              </NavLink>
             </li>
           </div>
         </ul>
