@@ -35,7 +35,15 @@ export function PokemonCardDetails({ pokemon }) {
         </li>
         <li>
           <b>type: </b>
-          {pokemon.types[0].type.name}
+          <ul>
+            {pokemon.types.map((t, index) => {
+              return (
+                <li key={index}>
+                  {index + 1} - {t.type.name}
+                </li>
+              );
+            })}
+          </ul>
         </li>
         <li>
           <p>

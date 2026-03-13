@@ -80,6 +80,7 @@ ul li {
   grid-template-columns: repeat(3, 200px);
   gap: 50px 60px;
   margin: 3rem 0;
+  justify-content: center;
 }
 
 .teamPokemonCard {
