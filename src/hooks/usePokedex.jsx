@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { toast } from "react-toastify";
 
 export function usePokedex() {
   const [pokemon, setPokemon] = useState([]);
@@ -13,7 +14,7 @@ export function usePokedex() {
         const response = await fetch(url);
 
         if (!response.ok) {
-          throw new Error("errore: ", response.status);
+          throw new Error(`errore: ${response.status}`);
         }
 
         const data = await response.json();
@@ -21,7 +22,7 @@ export function usePokedex() {
         setPokemon(data.results);
       } catch (error) {
         setError(error);
-        console.error(error.message);
+        toast.error(error.message);
       }
       setTimeout(() => {
         setLoading(false);

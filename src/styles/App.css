@@ -204,3 +204,8 @@ ul li button:hover {
   height: 21px;
   width: 20px;
 }
+
+.toast {
+  width: 14rem;
+  font-size: 12px;
+}

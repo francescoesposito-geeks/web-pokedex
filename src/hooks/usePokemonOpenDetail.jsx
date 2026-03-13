@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { toast } from "react-toastify";
 
 export function usePokemonOpenDetails(pokemon) {
   const [detail, setDetail] = useState(null);
@@ -8,16 +9,16 @@ export function usePokemonOpenDetails(pokemon) {
   async function fetchDetail() {
     if (detail !== null) return;
     try {
-      console.log("sono qua");
       const response = await fetch(pokemon.url);
       const data = await response.json();
 
       setDetail(data);
     } catch (error) {
       setError(error);
-      console.error(error.message);
+      toast.error(error.message);
+    } finally {
+      setLoading(false);
     }
-    setLoading(false);
   }
 
   return { detail, loading, error, fetchDetail };

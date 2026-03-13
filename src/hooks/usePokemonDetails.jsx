@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { toast } from "react-toastify";
 
 export function usePokemonDetails(id) {
   const [pokemon, setPokemon] = useState({});
@@ -22,8 +23,10 @@ export function usePokemonDetails(id) {
       } catch (error) {
         setError(error);
         console.error(error.message);
+        toast.error(error.message);
+      } finally {
+        setLoading(false);
       }
-      setLoading(false);
     }
 
     fetchData();

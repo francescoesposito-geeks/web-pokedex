@@ -40,7 +40,15 @@ export function PokemonCard({ pokemon }) {
             </li>
             <li>
               <b>type: </b>
-              {detail.types[0].type.name}
+              <ul>
+                {detail.types.map((t, index) => {
+                  return (
+                    <li key={index}>
+                      {index + 1} - {t.type.name}
+                    </li>
+                  );
+                })}
+              </ul>
             </li>
             <li>
               <img src={detail.sprites.front_default} alt="image-pokemon" />

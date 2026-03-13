@@ -4,6 +4,7 @@ import { GridCards } from "./gridCards";
 import { useMemo, useState } from "react";
 import { SkeletonHome } from "./SkeletonHome";
 import { ValueContext } from "/src/providers/ProvaContext";
+import { toast } from "react-toastify";
 
 export function DataMainControll() {
   const { pokemon, loading, error } = usePokedex();
@@ -51,8 +52,9 @@ export function DataMainControll() {
       setTeamPokemon(newTeam);
       localStorage.setItem("teamPokemon", JSON.stringify(newTeam));
       localStorage.setItem("id", JSON.stringify(idSaved));
+      toast.success("Pokémon added to the team!", { className: "toast" });
     } else {
-      alert("max 6 Pokemon in the Team");
+      toast.error("failed, max 6 Pokemon in the Team", { className: "toast" });
     }
 
     console.log("dopo id", idSaved);
