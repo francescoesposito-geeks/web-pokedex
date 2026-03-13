@@ -4,8 +4,8 @@
 }
 
 .subtitleAbout {
-  margin: 2rem auto;
-  border-bottom: 1px solid black;
+  margin-top: 4rem;
+  margin-bottom: 2rem;
   color: rgb(21, 21, 21);
 }
 
@@ -17,6 +17,7 @@
   color: rgb(227, 227, 227);
   display: flex;
   flex-direction: column;
+  margin-bottom: 5rem;
 }
 
 .linkTechnologies {

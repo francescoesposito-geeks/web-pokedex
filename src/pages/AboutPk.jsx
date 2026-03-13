@@ -44,7 +44,7 @@ export function AboutPk() {
         <ul>
           {techArray.map((tek, index) => (
             <li key={index}>
-              {tek.name}-
+              -{tek.name}:{" "}
               <a className="linkTechnologies" href={tek.link}>
                 {tek.link}
               </a>
