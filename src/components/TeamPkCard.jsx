@@ -3,7 +3,10 @@ export function TeamPkCard({ pokemon, onRemove }) {
     <li className="teamPokemonCard">
       <ul className="ulTeamPokemonCard">
         <li>
-          <button className="cardButton" onClick={() => onRemove(pokemon)}>
+          <button
+            className="cardButton"
+            onClick={() => onRemove(pokemon.idUnic)}
+          >
             -
           </button>
         </li>

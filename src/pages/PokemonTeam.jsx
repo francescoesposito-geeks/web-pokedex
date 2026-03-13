@@ -1,23 +1,9 @@
-import { useState } from "react";
+import { useContext } from "react";
 import { TeamPkCard } from "../components/TeamPkCard";
+import { TeamContext } from "../context/TeamContext";
 
 export function PokemonTeam() {
-  const saved = localStorage.getItem("teamPokemon");
-  let initialTeam;
-
-  if (saved) {
-    initialTeam = JSON.parse(saved);
-  } else {
-    initialTeam = [];
-  }
-
-  const [teamPokemon, setTeamPokemon] = useState(initialTeam);
-
-  function removePokemonToTheTeam(pk) {
-    const newTeam = teamPokemon.filter((p) => p.idUnic !== pk.idUnic);
-    setTeamPokemon(newTeam);
-    localStorage.setItem("teamPokemon", JSON.stringify(newTeam));
-  }
+  const { teamPokemon, removePokemonToTheTeam } = useContext(TeamContext);
 
   return (
     <>

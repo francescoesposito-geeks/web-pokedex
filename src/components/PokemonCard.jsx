@@ -1,11 +1,11 @@
 import { useContext, useState } from "react";
 import { Link } from "react-router";
-import { ValueContext } from "/src/providers/ProvaContext";
+import { TeamContext } from "/src/context/TeamContext";
 import { usePokemonOpenDetails } from "../hooks/usePokemonOpenDetail";
 
 export function PokemonCard({ pokemon }) {
   const [isOpen, setOpen] = useState(false);
-  const { addPokemonToTeam } = useContext(ValueContext);
+  const { addPokemonToTeam } = useContext(TeamContext);
   const { detail, loading, error, fetchDetail } =
     usePokemonOpenDetails(pokemon);
 
