@@ -5,7 +5,6 @@ export const TeamContext = createContext(null);
 
 export function TeamProvider({ children }) {
   const saved = localStorage.getItem("teamPokemon");
-  let idSaved = Number(localStorage.getItem("id"));
   let initialTeam;
   if (saved) {
     initialTeam = JSON.parse(saved);
@@ -16,12 +15,18 @@ export function TeamProvider({ children }) {
   const [teamPokemon, setTeamPokemon] = useState(initialTeam);
 
   function addPokemonToTeam(pk) {
-    idSaved++;
     if (teamPokemon.length < 6) {
-      const newTeam = [...teamPokemon, { ...pk, idUnic: idSaved }];
+      let nextId = 1;
+      if (teamPokemon.length > 0) {
+        nextId =
+          teamPokemon.reduce((max, pk) => {
+            if (pk.idUnic > max) return pk.idUnic;
+            return max;
+          }, 0) + 1;
+      }
+      const newTeam = [...teamPokemon, { ...pk, idUnic: nextId }];
       setTeamPokemon(newTeam);
       localStorage.setItem("teamPokemon", JSON.stringify(newTeam));
-      localStorage.setItem("id", JSON.stringify(idSaved));
       toast.success("Pokémon added to the team!");
     } else {
       toast.error("failed, max 6 Pokemon in the Team");
