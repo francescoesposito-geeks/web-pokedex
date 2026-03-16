@@ -210,3 +210,8 @@ ul li button:hover {
   width: 14rem;
   font-size: 12px;
 }
+
+.pkTeamFallBack {
+  text-align: center;
+  width: 100%;
+}

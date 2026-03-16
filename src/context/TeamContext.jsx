@@ -18,11 +18,7 @@ export function TeamProvider({ children }) {
     if (teamPokemon.length < 6) {
       let nextId = 1;
       if (teamPokemon.length > 0) {
-        nextId =
-          teamPokemon.reduce((max, pk) => {
-            if (pk.idUnic > max) return pk.idUnic;
-            return max;
-          }, 0) + 1;
+        nextId = Math.max(...teamPokemon.map((pk) => pk.idUnic)) + 1;
       }
       const newTeam = [...teamPokemon, { ...pk, idUnic: nextId }];
       setTeamPokemon(newTeam);

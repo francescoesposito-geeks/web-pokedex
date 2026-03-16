@@ -1,25 +1,32 @@
 import "/src/styles/About.css";
 
-export function AboutPk() {
-  const techArray = [
-    {
-      name: "React",
-      link: "https://it.react.dev/",
-    },
-    {
-      name: "React Router",
-      link: "https://reactrouter.com/home",
-    },
-    {
-      name: "PokeAPI",
-      link: "https://pokeapi.co/",
-    },
-    {
-      name: "Vite",
-      link: "https://vite.dev/",
-    },
-  ];
+const TECH_ARRAY = [
+  {
+    id: 1,
+    name: "React",
+    link: "https://it.react.dev/",
+  },
+  {
+    id: 2,
+    name: "React Router",
+    link: "https://reactrouter.com/home",
+  },
+  {
+    id: 3,
+    name: "PokeAPI",
+    link: "https://pokeapi.co/",
+  },
+  {
+    id: 4,
+    name: "Vite",
+    link: "https://vite.dev/",
+  },
+];
 
+const PROJECT_TEXT =
+  "This project is a digital replica of the Pokedex. Any questions about a Pokémon can be answered by searching for it or typing its name in the list. Currently, there is little information for each Pokémon, but more details will be added in the future. The main features include viewing the entire first generation of Pokémon with their key information, and clicking on a card allows you to add that Pokémon to your team (max 6). You can also see the APIs used to create this pokedex and more information about what a pokedex is. If you are missing Pokemon, click on the Pokeball in the top left menu.";
+
+export function AboutPk() {
   return (
     <>
       <div className="title">
@@ -27,23 +34,13 @@ export function AboutPk() {
       </div>
       <div className="containerAbout">
         <h2 className="subtitleAbout">what's this project?</h2>
-        <p className="aboutParag">
-          This project is a digital replica of the Pokedex. Any questions about
-          a Pokémon can be answered by searching for it or typing its name in
-          the list. Currently, there's little information for each Pokémon, but
-          more details will be added in the future. The main features include
-          viewing the entire first generation of Pokémon with their key
-          information, and clicking on a card allows you to add that Pokémon to
-          your team (max 6). You can also see the APIs used to create this
-          pokedex and more information about what a pokedex is. If you are
-          missing Pokemon, click on the Pokeball in the top left menu.
-        </p>
+        <p className="aboutParag">{PROJECT_TEXT}</p>
         <h2 className="subtitleAbout">used technologies</h2>
       </div>
       <div className="listTech">
         <ul>
-          {techArray.map((tek, index) => (
-            <li key={index}>
+          {TECH_ARRAY.map((tek) => (
+            <li key={tek.id}>
               -{tek.name}:{" "}
               <a className="linkTechnologies" href={tek.link}>
                 {tek.link}
