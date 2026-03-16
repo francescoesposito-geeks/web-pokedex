@@ -12,19 +12,19 @@ export function PokemonTeam() {
       <div className="title">
         <h1>TEAM POKEMON</h1>
       </div>
-      <ul className="gridCardsTeamPokemon">
-        {teamPokemon.length === 0 ? (
-          <p className="pkTeamFallBack">{POKEMON_TEAM_FALLBACK}</p>
-        ) : (
-          teamPokemon.map((pk) => (
+      {teamPokemon.length === 0 ? (
+        <p className="pkTeamFallBack">No Pokémon in your team!</p>
+      ) : (
+        <ul className="gridCardsTeamPokemon">
+          {teamPokemon.map((pk) => (
             <TeamPkCard
               key={pk.idUnic}
               pokemon={pk}
               onRemove={removePokemonToTheTeam}
             />
-          ))
-        )}
-      </ul>
+          ))}
+        </ul>
+      )}
     </>
   );
 }

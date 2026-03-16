@@ -1,10 +1,10 @@
 export function TeamPkCard({ pokemon, onRemove }) {
   return (
     <li className="teamPokemonCard">
+      <button className="cardButton" onClick={() => onRemove(pokemon.idUnic)}>
+        -
+      </button>
       <ul className="ulTeamPokemonCard">
-        <button className="cardButton" onClick={() => onRemove(pokemon.idUnic)}>
-          -
-        </button>
         <li>
           <img src={pokemon.sprites.front_default} alt="image-pokemon" />
         </li>

@@ -1,7 +1,7 @@
-export function SkeletonHome() {
+export function SkeletonHome({ boxs = 21 }) {
   return (
     <ul className="gridCardsPokemon">
-      {Array(60)
+      {Array(boxs)
         .fill(undefined)
         .map((value, index) => (
           <li key={index} className="pokemonCard">

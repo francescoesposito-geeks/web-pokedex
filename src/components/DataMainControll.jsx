@@ -1,6 +1,6 @@
 import { usePokedex } from "../hooks/usePokedex";
 import { FormPokedex } from "./Formpokedex";
-import { GridCards } from "./gridCards";
+import { GridCards } from "./GridCards";
 import { useMemo, useState } from "react";
 import { SkeletonHome } from "./SkeletonHome";
 
