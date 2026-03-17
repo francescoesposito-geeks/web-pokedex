@@ -237,3 +237,19 @@ ul li button:hover {
     transform: rotate(360deg);
   }
 }
+
+.errorFetch {
+  border: 1px solid black;
+  padding: 1rem;
+  margin: 5rem 10rem;
+  background-color: antiquewhite;
+  border-radius: 10px;
+}
+
+.errorFetchCardOpen {
+  border: 1px solid black;
+  padding: 1rem;
+  background-color: #eeeded;
+  width: 10rem;
+  height: 12rem;
+}

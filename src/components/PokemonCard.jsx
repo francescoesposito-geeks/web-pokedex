@@ -31,40 +31,48 @@ export function PokemonCard({ pokemon }) {
             />
           </button>
         </div>
-        {isOpen && !loading && (
-          <div className="cardIsOpen">
-            <li>
-              <b>height: </b> {detail.height * 10 + "cm"}
-            </li>
-            <li>
-              <b>weight: </b> {detail.weight / 10 + "kg"}
-            </li>
-            <li>
-              <b>type: </b>
-              <ul>
-                {detail.types.map((t, index) => {
-                  return (
-                    <li key={index}>
-                      {index + 1} - {t.type.name}
-                    </li>
-                  );
-                })}
-              </ul>
-            </li>
-            <li>
-              <img src={detail.sprites.front_default} alt="image-pokemon" />
-            </li>
-            <li className="bottomPokemonCardButtons">
-              <button onClick={() => addPokemonToTeam(detail)}>+</button>
-              {/* passo nell'url l'id del pokemon */}
-              <Link
-                className="backButton"
-                to={buildDinamicPath.pokemonDetail(detail.id)}
-              >
-                info
-              </Link>
-            </li>
+        {error ? (
+          <div className="errorFetchCardOpen">
+            <p>something go wrong</p>
+            <p>{error.message}</p>
           </div>
+        ) : (
+          isOpen &&
+          !loading && (
+            <div className="cardIsOpen">
+              <li>
+                <b>height: </b> {detail.height * 10 + "cm"}
+              </li>
+              <li>
+                <b>weight: </b> {detail.weight / 10 + "kg"}
+              </li>
+              <li>
+                <b>type: </b>
+                <ul>
+                  {detail.types.map((t, index) => {
+                    return (
+                      <li key={index}>
+                        {index + 1} - {t.type.name}
+                      </li>
+                    );
+                  })}
+                </ul>
+              </li>
+              <li>
+                <img src={detail.sprites.front_default} alt="image-pokemon" />
+              </li>
+              <li className="bottomPokemonCardButtons">
+                <button onClick={() => addPokemonToTeam(detail)}>+</button>
+                {/* passo nell'url l'id del pokemon */}
+                <Link
+                  className="backButton"
+                  to={buildDinamicPath.pokemonDetail(detail.id)}
+                >
+                  info
+                </Link>
+              </li>
+            </div>
+          )
         )}
       </ul>
     </li>

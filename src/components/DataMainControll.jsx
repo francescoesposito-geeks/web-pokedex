@@ -35,6 +35,11 @@ export function DataMainControll() {
       />
       {loading ? (
         <SkeletonHome />
+      ) : error ? (
+        <div className="errorFetch">
+          <p>something go wrong</p>
+          <p>{error.message}</p>
+        </div>
       ) : (
         <GridCards pokemonData={filterArrayPokemon} />
       )}

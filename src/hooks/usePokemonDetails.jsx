@@ -14,7 +14,7 @@ export function usePokemonDetails(id) {
         const response = await fetch(url);
 
         if (!response.ok) {
-          throw new Error("errore: ", response.status);
+          throw new Error("errore: " + response.status);
         }
 
         const data = await response.json();

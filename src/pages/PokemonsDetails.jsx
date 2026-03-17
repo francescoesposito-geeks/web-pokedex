@@ -4,7 +4,7 @@ import { PokemonCardDetails } from "../components/PokemonCardDetails";
 
 export function PokemonsDetails() {
   const params = useParams();
-  const { pokemon, loading } = usePokemonDetails(params.id);
+  const { pokemon, loading, error } = usePokemonDetails(params.id);
 
   return (
     <>
@@ -18,6 +18,11 @@ export function PokemonsDetails() {
 
         {loading ? (
           <div className="spinner" />
+        ) : error ? (
+          <div className="errorFetch">
+            <p>something go wrong</p>
+            <p>{error.message}</p>
+          </div>
         ) : (
           <PokemonCardDetails pokemon={pokemon} />
         )}

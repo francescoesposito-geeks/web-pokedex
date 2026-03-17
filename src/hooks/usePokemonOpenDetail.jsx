@@ -10,6 +10,9 @@ export function usePokemonOpenDetails(pokemon) {
     if (detail !== null) return;
     try {
       const response = await fetch(pokemon.url);
+      if (!response.ok) {
+        throw new Error("errore: " + response.status);
+      }
       const data = await response.json();
 
       setDetail(data);
