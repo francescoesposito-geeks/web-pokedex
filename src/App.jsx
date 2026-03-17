@@ -7,6 +7,13 @@ import { PokemonsDetails } from "./pages/PokemonsDetails";
 import { PokemonTeam } from "./pages/PokemonTeam";
 import { MainLayout } from "./pages/_layout";
 
+// const ROUTES = [
+//   {
+//     path: "/",
+//     element: {<MainLayout />}
+//   }
+// ];
+
 function App() {
   return (
     <Routes>

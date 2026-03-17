@@ -24,9 +24,8 @@ export function usePokedex() {
         setError(error);
         toast.error(error.message);
       }
-      setTimeout(() => {
-        setLoading(false);
-      }, 1000);
+
+      setLoading(false);
     }
 
     fetchData();

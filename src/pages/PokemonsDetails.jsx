@@ -16,7 +16,11 @@ export function PokemonsDetails() {
           BACK
         </Link>
 
-        {!loading && <PokemonCardDetails pokemon={pokemon} />}
+        {loading ? (
+          <div className="spinner" />
+        ) : (
+          <PokemonCardDetails pokemon={pokemon} />
+        )}
       </div>
     </>
   );

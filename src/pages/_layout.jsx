@@ -4,10 +4,10 @@ import { Footer } from "/src/components/Footer.jsx";
 
 export function MainLayout() {
   return (
-    <div>
+    <>
       <Navbar />
       <Outlet />
       <Footer />
-    </div>
+    </>
   );
 }

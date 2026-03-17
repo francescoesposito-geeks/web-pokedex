@@ -43,7 +43,7 @@ export function Footer() {
       </div>
       <div className="secondRawFooter">
         {FOOTER_TEXT_COLUMNS.map((obj) => (
-          <div className="listFooter">
+          <div key={obj.title} className="listFooter">
             <ul>
               <h3>{obj.title}</h3>
               {obj.items.map((item) => (
