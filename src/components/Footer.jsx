@@ -46,8 +46,8 @@ export function Footer() {
           <div key={obj.title} className="listFooter">
             <ul>
               <h3>{obj.title}</h3>
-              {obj.items.map((item) => (
-                <li>{item}</li>
+              {obj.items.map((item, index) => (
+                <li key={index}>{item}</li>
               ))}
             </ul>
           </div>
