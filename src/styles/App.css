@@ -52,7 +52,7 @@ ul li {
   display: grid;
   grid-template-columns: repeat(3, 130px);
   gap: 50px 150px;
-  margin-top: 3rem;
+  margin-top: 4rem;
   margin-bottom: 3rem;
 }
 

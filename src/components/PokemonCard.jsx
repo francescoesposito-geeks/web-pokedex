@@ -2,6 +2,7 @@ import { useContext, useState } from "react";
 import { Link } from "react-router";
 import { TeamContext } from "/src/context/TeamContext";
 import { usePokemonOpenDetails } from "../hooks/usePokemonOpenDetail";
+import { buildDinamicPath } from "../routes/paths";
 
 export function PokemonCard({ pokemon }) {
   const [isOpen, setOpen] = useState(false);
@@ -56,7 +57,10 @@ export function PokemonCard({ pokemon }) {
             <li className="bottomPokemonCardButtons">
               <button onClick={() => addPokemonToTeam(detail)}>+</button>
               {/* passo nell'url l'id del pokemon */}
-              <Link className="backButton" to={`/pokemon/${detail.id}`}>
+              <Link
+                className="backButton"
+                to={buildDinamicPath.pokemonDetail(detail.id)}
+              >
                 info
               </Link>
             </li>

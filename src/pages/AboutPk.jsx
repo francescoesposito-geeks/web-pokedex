@@ -8,8 +8,8 @@ const TECH_ARRAY = [
   },
   {
     id: 2,
-    name: "React Router",
-    link: "https://reactrouter.com/home",
+    name: "Vite",
+    link: "https://vite.dev/",
   },
   {
     id: 3,
@@ -18,8 +18,8 @@ const TECH_ARRAY = [
   },
   {
     id: 4,
-    name: "Vite",
-    link: "https://vite.dev/",
+    name: "React Router",
+    link: "https://reactrouter.com/home",
   },
 ];
 
@@ -38,10 +38,10 @@ export function AboutPk() {
         <h2 className="subtitleAbout">used technologies</h2>
       </div>
       <div className="listTech">
-        <ul>
+        <ul className="ulListTek">
           {TECH_ARRAY.map((tek) => (
-            <li key={tek.id}>
-              -{tek.name}:{" "}
+            <li key={tek.id} className="liAbout">
+              {tek.name}
               <a className="linkTechnologies" href={tek.link}>
                 {tek.link}
               </a>
