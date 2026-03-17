@@ -13,7 +13,7 @@ export function PokemonTeam() {
         <h1>TEAM POKEMON</h1>
       </div>
       {teamPokemon.length === 0 ? (
-        <p className="pkTeamFallBack">No Pokémon in your team!</p>
+        <p className="pkTeamFallBack">{POKEMON_TEAM_FALLBACK}</p>
       ) : (
         <ul className="gridCardsTeamPokemon">
           {teamPokemon.map((pk) => (
