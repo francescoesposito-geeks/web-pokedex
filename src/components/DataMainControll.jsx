@@ -22,10 +22,6 @@ export function DataMainControll() {
     return result;
   }, [pokemon, debouncedInput]);
 
-  function searchPokemon() {
-    setInputForm("");
-  }
-
   function resetForm() {
     setInputForm("");
   }

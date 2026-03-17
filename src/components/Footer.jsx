@@ -1,5 +1,31 @@
 import "/src/styles/footer.css";
 
+const FOOTER_TEXT_COLUMNS = [
+  {
+    title: "INFO",
+    items: ["Lorem", "ipsum", "dolor", "sit", "amet", "mudu"],
+  },
+  {
+    title: "PRODOTTI",
+    items: ["Lorem", "ipsum", "dolor", "sit", "amet", "adipisicing"],
+  },
+  {
+    title: "LAVORI",
+    items: ["Lorem", "ipsum", "dolor", "sit", "amet", "pikachu"],
+  },
+  {
+    title: "LOREM",
+    items: ["Lorem", "ipsum", "dolor", "sit", "amet", "ash"],
+  },
+  {
+    title: "SUPPORTO",
+    items: ["Lorem", "ipsum", "dolor", "sit", "amet", "gottachemall"],
+  },
+];
+
+const FOOTER_RIGHTS_RESERVED =
+  "© www.cirowebsite.com - Grafica, layout, articoli e guide sono di esclusiva proprietà del ciromaster - Tutti i diritti riservati";
+
 export function Footer() {
   return (
     <div className="footerDiv">
@@ -16,65 +42,19 @@ export function Footer() {
         />
       </div>
       <div className="secondRawFooter">
-        <div className="listFooter">
-          <ul>
-            <h3>INFO</h3>
-            <li>prova</li>
-            <li>scrittura</li>
-            <li>pokemons</li>
-            <li>yatusabes</li>
-            <li>gotta</li>
-            <li>chemall</li>
-          </ul>
-        </div>
-        <div className="listFooter">
-          <ul>
-            <h3>PRODOTTI</h3>
-            <li>prova</li>
-            <li>scrittura</li>
-            <li>pokemons</li>
-            <li>yatusabes</li>
-            <li>gotta</li>
-            <li>chemall</li>
-          </ul>
-        </div>
-        <div className="listFooter">
-          <ul>
-            <h3>LAVORI</h3>
-            <li>prova</li>
-            <li>scrittura</li>
-            <li>pokemons</li>
-            <li>yatusabes</li>
-          </ul>
-        </div>
-        <div className="listFooter">
-          <ul>
-            <h3>INFO</h3>
-            <li>prova</li>
-            <li>scrittura</li>
-            <li>pokemons</li>
-            <li>yatusabes</li>
-            <li>gotta</li>
-            <li>chemall</li>
-          </ul>
-        </div>
-        <div className="listFooter">
-          <ul>
-            <h3>SUPPORTO</h3>
-            <li>prova</li>
-            <li>scrittura</li>
-            <li>pokemons</li>
-            <li>yatusabes</li>
-            <li>gotta</li>
-            <li>chemakkkll</li>
-          </ul>
-        </div>
+        {FOOTER_TEXT_COLUMNS.map((obj) => (
+          <div className="listFooter">
+            <ul>
+              <h3>{obj.title}</h3>
+              {obj.items.map((item) => (
+                <li>{item}</li>
+              ))}
+            </ul>
+          </div>
+        ))}
       </div>
       <div className="thirdRawFooter">
-        <p>
-          © www.cirowebsite.com - Grafica, layout, articoli e guide sono di
-          esclusiva proprietà del ciromaster - Tutti i diritti riservati
-        </p>
+        <p>{FOOTER_RIGHTS_RESERVED}</p>
       </div>
     </div>
   );
