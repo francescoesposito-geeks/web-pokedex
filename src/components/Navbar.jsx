@@ -1,7 +1,15 @@
 import "/src/styles/Navbar.css";
-import { NavLink } from "react-router";
+import { NavLink, useLocation } from "react-router";
 
 export function Navbar() {
+  const location = useLocation();
+
+  const handleHomeClick = () => {
+    if (location.pathname === "/") {
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    }
+  };
+
   return (
     <>
       <nav className="navbar">
@@ -11,7 +19,7 @@ export function Navbar() {
         <ul className="menuHeader">
           <div className="navBarDiv">
             <li>
-              <NavLink className="linkNavbar" to="/">
+              <NavLink className="linkNavbar" to="/" onClick={handleHomeClick}>
                 Home
               </NavLink>
             </li>
