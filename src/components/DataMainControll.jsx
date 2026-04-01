@@ -1,7 +1,7 @@
 import { usePokedex } from "../hooks/usePokedex";
 import { FormPokedex } from "./Formpokedex";
 import { GridCards } from "./GridCards";
-import { useMemo, useState, useEffect } from "react";
+import { useMemo, useState } from "react";
 import { SkeletonHome } from "./SkeletonHome";
 import { useDebounce } from "/src/hooks/useDebounce.jsx";
 
@@ -11,15 +11,13 @@ export function DataMainControll() {
   const debouncedInput = useDebounce(inputForm, 500);
 
   const filterArrayPokemon = useMemo(() => {
-    let result = pokemon;
+    const cleanedInput = debouncedInput.trim().toLowerCase();
 
-    if (debouncedInput !== "") {
-      result = pokemon.filter((pk) => {
-        return pk.name === debouncedInput;
-      });
-    }
+    if (cleanedInput === "") return pokemon;
 
-    return result;
+    return pokemon.filter((pk) =>
+      pk.name.toLowerCase().startsWith(cleanedInput),
+    );
   }, [pokemon, debouncedInput]);
 
   function resetForm() {
