@@ -1,0 +1,89 @@
+:root {
+  --red: #c8102e;
+  --red-dark: #9e0c24;
+  --bg: #f3f4f6;
+  --surface: #ffffff;
+  --surface-alt: #eef0f3;
+  --ink: #1d1f24;
+  --muted: #5c636e;
+  --line: #d9dce2;
+  --focus: #1f6feb;
+
+  font-family: system-ui, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  line-height: 1.5;
+  color-scheme: light dark;
+  color: var(--ink);
+  background-color: var(--bg);
+  -webkit-font-smoothing: antialiased;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --red: #e2384f;
+    --red-dark: #b3263a;
+    --bg: #121417;
+    --surface: #1b1e23;
+    --surface-alt: #242830;
+    --ink: #eceef1;
+    --muted: #a3aab5;
+    --line: #2f343c;
+    --focus: #6ea8ff;
+  }
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-width: 320px;
+  background-color: var(--bg);
+}
+
+#root {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+h1,
+h2,
+p,
+ul,
+dl,
+dd {
+  margin: 0;
+}
+
+ul {
+  padding: 0;
+  list-style: none;
+}
+
+a {
+  color: var(--red);
+}
+
+input,
+button {
+  font: inherit;
+  color: inherit;
+}
+
+:focus-visible {
+  outline: 3px solid var(--focus);
+  outline-offset: 2px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    scroll-behavior: auto !important;
+  }
+}

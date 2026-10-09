@@ -1,0 +1,116 @@
+.navbar {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  /* fixed red in both themes: white text keeps enough contrast */
+  background-color: #c8102e;
+  color: #ffffff;
+}
+
+.navbar-inner {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem 1.5rem;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0.75rem 1.5rem;
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  color: #ffffff;
+  font-size: 1.2rem;
+  font-weight: 800;
+  text-decoration: none;
+}
+
+/* the blue lens and the three lights of the Pokédex device */
+.dexLights {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.25rem;
+}
+
+.brand-lens {
+  width: 1.6rem;
+  height: 1.6rem;
+  border: 3px solid #ffffff;
+  border-radius: 50%;
+  background-color: #49b6f2;
+  box-shadow: inset -3px -3px 0 rgba(0, 0, 0, 0.18);
+}
+
+.dexLeds {
+  display: flex;
+  gap: 0.2rem;
+}
+
+.led {
+  width: 0.45rem;
+  height: 0.45rem;
+  border: 1.5px solid #ffffff;
+  border-radius: 50%;
+}
+
+.led-red {
+  background-color: #ff4b4b;
+}
+
+.led-yellow {
+  background-color: #ffd23f;
+}
+
+.led-green {
+  background-color: #42d36b;
+}
+
+.isLoading .brand-lens {
+  animation: lens-blink 0.7s ease-in-out infinite;
+}
+
+@keyframes lens-blink {
+  50% {
+    background-color: #c9eeff;
+    box-shadow: 0 0 10px 2px #8fdcff;
+  }
+}
+
+.menuHeader {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.25rem;
+}
+
+.linkNavbar {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.4rem 0.75rem;
+  border-radius: 6px;
+  color: #ffffff;
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.linkNavbar:hover {
+  background-color: #9e0c24;
+}
+
+.linkNavbar.active {
+  background-color: #ffffff;
+  color: #c8102e;
+}
+
+.team-count {
+  font-size: 0.85rem;
+  font-variant-numeric: tabular-nums;
+  opacity: 0.85;
+}
+
+.navbar :focus-visible {
+  outline-color: #ffffff;
+}

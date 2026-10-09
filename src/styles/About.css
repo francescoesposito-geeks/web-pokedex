@@ -1,0 +1,35 @@
+.containerAbout {
+  max-width: 44rem;
+}
+
+.aboutParag {
+  font-size: 1.075rem;
+}
+
+.subtitleAbout {
+  margin: 2rem 0 0.75rem;
+  font-size: 1.25rem;
+}
+
+.ulListTek {
+  display: grid;
+  gap: 0.5rem;
+}
+
+.liAbout {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.25rem 0.75rem;
+  padding: 0.75rem 1rem;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background-color: var(--surface);
+}
+
+.linkTechnologies {
+  font-weight: 700;
+}
+
+.liAbout span {
+  color: var(--muted);
+}
