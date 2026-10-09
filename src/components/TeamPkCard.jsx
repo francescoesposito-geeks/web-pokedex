@@ -1,40 +1,46 @@
+import { Link } from "react-router";
+import { buildDinamicPath } from "../routes/paths";
+import {
+  formatHeight,
+  formatPokedexNumber,
+  formatWeight,
+} from "../utils/pokemon";
+import { TypeBadges } from "./TypeBadges";
+
 export function TeamPkCard({ pokemon, onRemove }) {
   return (
-    <li className="teamPokemonCard">
-      <button className="cardButton" onClick={() => onRemove(pokemon.idUnic)}>
-        -
-      </button>
-      <ul className="ulTeamPokemonCard">
-        <li>
-          <img src={pokemon.sprites.front_default} alt="image-pokemon" />
-        </li>
-        <li>
-          <b>id: </b>
-          {pokemon.idUnic}
-        </li>
-        <li>
-          <b>name: </b>
+    <article className="teamPokemonCard">
+      <span className="pokedexNumber">{formatPokedexNumber(pokemon.id)}</span>
+      <img
+        className="cardSprite"
+        src={pokemon.sprite}
+        alt=""
+        width="96"
+        height="96"
+      />
+      <h2 className="pokemonName">
+        <Link to={buildDinamicPath.pokemonDetail(pokemon.id)}>
           {pokemon.name}
-        </li>
-        <li>
-          <b>height: </b> {pokemon.height * 10 + "cm"}
-        </li>
-        <li>
-          <b>weight: </b> {pokemon.weight / 10 + "kg"}
-        </li>
-        <li>
-          <b>type: </b>
-          <ul>
-            {pokemon.types.map((t, index) => {
-              return (
-                <li key={index}>
-                  {index + 1} - {t.type.name}
-                </li>
-              );
-            })}
-          </ul>
-        </li>
-      </ul>
-    </li>
+        </Link>
+      </h2>
+      <TypeBadges types={pokemon.types} />
+      <dl className="cardFacts">
+        <div>
+          <dt>Height</dt>
+          <dd>{formatHeight(pokemon.height)}</dd>
+        </div>
+        <div>
+          <dt>Weight</dt>
+          <dd>{formatWeight(pokemon.weight)}</dd>
+        </div>
+      </dl>
+      <button
+        type="button"
+        className="secondaryButton"
+        onClick={() => onRemove(pokemon.idUnic)}
+      >
+        Remove from team
+      </button>
+    </article>
   );
 }

@@ -1,11 +1,12 @@
-import "/src/styles/App.css";
-import { PATHS } from "/src/routes/paths.jsx";
+import "./styles/App.css";
 import { Route, Routes } from "react-router";
+import { PATHS } from "./routes/paths.jsx";
+import { MainLayout } from "./pages/_layout";
 import { Home } from "./pages/Home";
 import { AboutPk } from "./pages/AboutPk";
 import { PokemonsDetails } from "./pages/PokemonsDetails";
 import { PokemonTeam } from "./pages/PokemonTeam";
-import { MainLayout } from "./pages/_layout";
+import { NotFound } from "./pages/NotFound";
 
 function App() {
   return (
@@ -15,6 +16,7 @@ function App() {
         <Route path={PATHS.ABOUT} element={<AboutPk />} />
         <Route path={PATHS.POKEMON_DETAILS} element={<PokemonsDetails />} />
         <Route path={PATHS.POKEMON_TEAM} element={<PokemonTeam />} />
+        <Route path="*" element={<NotFound />} />
       </Route>
     </Routes>
   );

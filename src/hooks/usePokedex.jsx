@@ -1,5 +1,8 @@
 import { useEffect, useState } from "react";
 import { toast } from "react-toastify";
+import { trackedFetch } from "../utils/loadingTracker";
+
+const POKEDEX_URL = "https://pokeapi.co/api/v2/pokemon?limit=151";
 
 export function usePokedex() {
   const [pokemon, setPokemon] = useState([]);
@@ -8,21 +11,16 @@ export function usePokedex() {
 
   useEffect(() => {
     async function fetchData() {
-      let url = "https://pokeapi.co/api/v2/pokemon/?limit=151 ";
-
       try {
-        const response = await fetch(url);
-
+        const response = await trackedFetch(POKEDEX_URL);
         if (!response.ok) {
-          throw new Error(`errore: ${response.status}`);
+          throw new Error(`PokeAPI answered with error ${response.status}`);
         }
-
         const data = await response.json();
-
         setPokemon(data.results);
       } catch (error) {
         setError(error);
-        toast.error(error.message);
+        toast.error("The Pokédex could not be loaded.");
       } finally {
         setLoading(false);
       }
@@ -30,5 +28,6 @@ export function usePokedex() {
 
     fetchData();
   }, []);
+
   return { pokemon, loading, error };
 }

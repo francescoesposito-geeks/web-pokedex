@@ -1,55 +1,35 @@
 .containerAbout {
-  display: flex;
-  flex-direction: column;
-}
-
-.subtitleAbout {
-  margin-top: 4rem;
-  margin-bottom: 2rem;
-  color: rgb(21, 21, 21);
+  max-width: 44rem;
 }
 
 .aboutParag {
-  color: rgb(227, 227, 227);
-  margin: auto 10rem;
-}
-.listTech {
-  color: rgb(227, 227, 227);
-  display: flex;
-  flex-direction: column;
-  margin-bottom: 3rem;
+  font-size: 1.075rem;
 }
 
-.linkTechnologies {
-  color: white;
-  text-decoration: none;
+.subtitleAbout {
+  margin: 2rem 0 0.75rem;
+  font-size: 1.25rem;
 }
 
 .ulListTek {
-  color: rgb(227, 227, 227);
-  display: flex;
-  justify-content: center;
-  margin-bottom: 5rem;
-}
-
-.listTech ul {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 1rem;
-  flex-direction: column;
-  align-content: center;
-}
-
-.listTech li a {
-  border: 1px solid rgb(227, 227, 227);
-  padding: 0.3rem 0.8rem;
-  border-radius: 10px;
-  gap: 5rem;
+  display: grid;
+  gap: 0.5rem;
 }
 
 .liAbout {
   display: flex;
-  justify-content: space-between;
-  align-items: center;
-  gap: 5rem;
+  flex-wrap: wrap;
+  gap: 0.25rem 0.75rem;
+  padding: 0.75rem 1rem;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background-color: var(--surface);
+}
+
+.linkTechnologies {
+  font-weight: 700;
+}
+
+.liAbout span {
+  color: var(--muted);
 }

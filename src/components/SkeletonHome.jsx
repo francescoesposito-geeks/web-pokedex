@@ -1,16 +1,16 @@
-export function SkeletonHome({ boxs = 21 }) {
+export function SkeletonHome({ boxs = 18 }) {
   return (
-    <ul className="gridCardsPokemon">
-      {Array(boxs)
-        .fill(undefined)
-        .map((value, index) => (
-          <li key={index} className="pokemonCard">
-            <div className="nomePokemonCard">
-              <div className="skeleton skeleton-name" />
-              <div className="skeleton skeleton-button" />
-            </div>
-          </li>
-        ))}
+    <ul className="gridCardsPokemon" aria-busy="true" aria-label="Loading">
+      {Array.from({ length: boxs }, (_, index) => (
+        <li key={index}>
+          <div className="pokemonCard skeletonCard">
+            <div className="skeleton skeleton-number" />
+            <div className="skeleton skeleton-sprite" />
+            <div className="skeleton skeleton-name" />
+            <div className="skeleton skeleton-button" />
+          </div>
+        </li>
+      ))}
     </ul>
   );
 }

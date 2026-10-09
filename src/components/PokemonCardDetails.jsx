@@ -1,73 +1,104 @@
-export function PokemonCardDetails({ pokemon }) {
+import {
+  formatApiName,
+  formatHeight,
+  formatPokedexNumber,
+  formatWeight,
+} from "../utils/pokemon";
+import { TypeBadges } from "./TypeBadges";
+
+const MAX_BASE_STAT = 255;
+
+export function PokemonCardDetails({ pokemon, onAdd }) {
+  const artwork =
+    pokemon.sprites.other?.["official-artwork"]?.front_default ??
+    pokemon.sprites.front_default;
+
+  const gallery = [
+    { label: "Front", src: pokemon.sprites.front_default },
+    { label: "Back", src: pokemon.sprites.back_default },
+    { label: "Shiny front", src: pokemon.sprites.front_shiny },
+    { label: "Shiny back", src: pokemon.sprites.back_shiny },
+  ].filter((sprite) => sprite.src);
+
   return (
-    <div className="containerPokemonDetails">
-      <ul className="listImgDefaultPkDetails">
-        <li>
-          <img
-            className="imgDetails"
-            src={pokemon.sprites.front_default}
-            alt="image-pokemon"
-          />
-        </li>
-        <li>
-          <img
-            className="imgDetails"
-            src={pokemon.sprites.back_default}
-            alt=""
-          />
-        </li>
-      </ul>
-      <ul className="listPokemonDetails">
-        <li>
-          <p>
-            <b>id:</b> {pokemon.id}
-          </p>
-        </li>
-        <li>
-          <b>name: </b>
-          {pokemon.name}
-        </li>
-        <li>
-          <b>height: </b> {pokemon.height * 10 + "cm"}
-        </li>
-        <li>
-          <b>weight: </b> {pokemon.weight / 10 + "kg"}
-        </li>
-        <li>
-          <b>type: </b>
-          <ul>
-            {pokemon.types.map((t, index) => {
-              return (
-                <li key={index}>
-                  {index + 1} - {t.type.name}
-                </li>
-              );
-            })}
+    <article className="containerPokemonDetails">
+      <div className="detailsArtwork">
+        <img src={artwork} alt={`Artwork of ${pokemon.name}`} />
+      </div>
+
+      <div className="detailsInfo">
+        <p className="pokedexNumber">{formatPokedexNumber(pokemon.id)}</p>
+        <h1 className="detailsName">{pokemon.name}</h1>
+        <TypeBadges types={pokemon.types} />
+
+        <dl className="listPokemonDetails">
+          <div>
+            <dt>Height</dt>
+            <dd>{formatHeight(pokemon.height)}</dd>
+          </div>
+          <div>
+            <dt>Weight</dt>
+            <dd>{formatWeight(pokemon.weight)}</dd>
+          </div>
+          <div>
+            <dt>Abilities</dt>
+            <dd>
+              {pokemon.abilities
+                .map(
+                  (a) =>
+                    formatApiName(a.ability.name) +
+                    (a.is_hidden ? " (hidden)" : ""),
+                )
+                .join(", ")}
+            </dd>
+          </div>
+          <div>
+            <dt>Moves</dt>
+            <dd>{pokemon.moves.length} moves it can learn</dd>
+          </div>
+        </dl>
+
+        <button type="button" className="primaryButton" onClick={onAdd}>
+          Add to team
+        </button>
+      </div>
+
+      <section className="detailsStats" aria-labelledby="stats-title">
+        <h2 id="stats-title">Base stats</h2>
+        <dl className="statList">
+          {pokemon.stats.map((s) => (
+            <div key={s.stat.name} className="statRow">
+              <dt>{formatApiName(s.stat.name)}</dt>
+              <dd>{s.base_stat}</dd>
+              <div className="statBar" aria-hidden="true">
+                <span
+                  style={{ width: `${(s.base_stat / MAX_BASE_STAT) * 100}%` }}
+                />
+              </div>
+            </div>
+          ))}
+        </dl>
+      </section>
+
+      {gallery.length > 0 && (
+        <section className="detailsGallery" aria-labelledby="sprites-title">
+          <h2 id="sprites-title">Sprites</h2>
+          <ul className="spriteList">
+            {gallery.map((sprite) => (
+              <li key={sprite.label}>
+                <img
+                  className="imgDetails"
+                  src={sprite.src}
+                  alt={`${sprite.label} sprite of ${pokemon.name}`}
+                  width="96"
+                  height="96"
+                />
+                <span>{sprite.label}</span>
+              </li>
+            ))}
           </ul>
-        </li>
-        <li>
-          <p>
-            <b>abilities: </b>
-            {pokemon.abilities[0].ability.name}
-          </p>
-        </li>
-        <li>
-          <b>moves: </b>
-          {pokemon.moves[0].move.name}
-        </li>
-      </ul>
-      <ul className="listImgShyniPkDetails">
-        <li>
-          <img
-            className="imgDetails"
-            src={pokemon.sprites.front_shiny}
-            alt=""
-          />
-        </li>
-        <li>
-          <img className="imgDetails" src={pokemon.sprites.back_shiny} alt="" />
-        </li>
-      </ul>
-    </div>
+        </section>
+      )}
+    </article>
   );
 }

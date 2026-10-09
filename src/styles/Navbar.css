@@ -1,70 +1,116 @@
-nav a img {
-  width: 40px;
-  height: 40px;
-}
-nav {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  z-index: 1000;
-}
-
-body {
-  padding-top: 3rem;
-}
-
 .navbar {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  /* fixed red in both themes: white text keeps enough contrast */
+  background-color: #c8102e;
+  color: #ffffff;
+}
+
+.navbar-inner {
   display: flex;
-  flex-direction: row;
-  justify-content: flex-start;
+  flex-wrap: wrap;
   align-items: center;
-  padding: 2px 14px;
-  background: #3c3b3b;
-  color: white;
-  gap: 2rem;
-  border-bottom: 1.5px outset black;
+  justify-content: space-between;
+  gap: 0.5rem 1.5rem;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0.75rem 1.5rem;
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  color: #ffffff;
+  font-size: 1.2rem;
+  font-weight: 800;
+  text-decoration: none;
+}
+
+/* the blue lens and the three lights of the Pokédex device */
+.dexLights {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.25rem;
+}
+
+.brand-lens {
+  width: 1.6rem;
+  height: 1.6rem;
+  border: 3px solid #ffffff;
+  border-radius: 50%;
+  background-color: #49b6f2;
+  box-shadow: inset -3px -3px 0 rgba(0, 0, 0, 0.18);
+}
+
+.dexLeds {
+  display: flex;
+  gap: 0.2rem;
+}
+
+.led {
+  width: 0.45rem;
+  height: 0.45rem;
+  border: 1.5px solid #ffffff;
+  border-radius: 50%;
+}
+
+.led-red {
+  background-color: #ff4b4b;
+}
+
+.led-yellow {
+  background-color: #ffd23f;
+}
+
+.led-green {
+  background-color: #42d36b;
+}
+
+.isLoading .brand-lens {
+  animation: lens-blink 0.7s ease-in-out infinite;
+}
+
+@keyframes lens-blink {
+  50% {
+    background-color: #c9eeff;
+    box-shadow: 0 0 10px 2px #8fdcff;
+  }
 }
 
 .menuHeader {
   display: flex;
-  gap: 20px;
-  list-style: none;
-  padding: 0;
-  margin: 0;
-  width: 100%;
-  justify-content: space-between;
-  font-size: 12px;
-  padding-right: 2rem;
-}
-
-.navBarDiv {
-  display: flex;
+  flex-wrap: wrap;
+  gap: 0.25rem;
 }
 
 .linkNavbar {
-  color: white;
-  text-align: center;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.4rem 0.75rem;
+  border-radius: 6px;
+  color: #ffffff;
+  font-weight: 600;
   text-decoration: none;
-  padding: 1rem 3rem;
 }
+
 .linkNavbar:hover {
-  background-color: #424242;
+  background-color: #9e0c24;
 }
 
-h1 {
-  text-align: center;
-  margin: 0.8rem 0;
-  font-size: 1.4rem;
-}
-.title {
-  background-color: #b3a125;
-  border: 3px #000000 groove;
-  width: 100%;
-  margin: 0;
+.linkNavbar.active {
+  background-color: #ffffff;
+  color: #c8102e;
 }
 
-nav a.active {
-  text-decoration: underline;
-  text-decoration-color: #b3a125;
+.team-count {
+  font-size: 0.85rem;
+  font-variant-numeric: tabular-nums;
+  opacity: 0.85;
+}
+
+.navbar :focus-visible {
+  outline-color: #ffffff;
 }

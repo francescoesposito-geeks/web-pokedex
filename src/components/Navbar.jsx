@@ -1,56 +1,67 @@
-import "/src/styles/Navbar.css";
-import { NavLink, useLocation } from "react-router";
+import "../styles/Navbar.css";
+import { useContext } from "react";
+import { Link, NavLink, useLocation } from "react-router";
+import { PATHS } from "../routes/paths.jsx";
+import { MAX_TEAM_SIZE, TeamContext } from "../context/TeamContext";
+import { useIsLoading } from "../hooks/useIsLoading";
 
 export function Navbar() {
   const location = useLocation();
+  const { teamPokemon } = useContext(TeamContext);
+  const isLoading = useIsLoading();
 
   const handleHomeClick = () => {
-    if (location.pathname === "/") {
+    if (location.pathname === PATHS.HOME) {
       window.scrollTo({ top: 0, behavior: "smooth" });
     }
   };
 
   return (
-    <>
-      <nav className="navbar">
-        <a href="https://www.youtube.com/watch?v=_9HHju9_hMM" target="_blank">
-          <img src="/src/assets/Pokeball-PNG.png" alt="logo-pokemon"></img>
-        </a>
-        <ul className="menuHeader">
-          <div className="navBarDiv">
+    <header className="navbar">
+      <div className="navbar-inner">
+        <Link className="brand" to={PATHS.HOME} onClick={handleHomeClick}>
+          {/* the lens and the three lights of the Pokédex: the lens blinks while data is loading */}
+          <span
+            className={isLoading ? "dexLights isLoading" : "dexLights"}
+            aria-hidden="true"
+          >
+            <span className="brand-lens" />
+            <span className="dexLeds">
+              <span className="led led-red" />
+              <span className="led led-yellow" />
+              <span className="led led-green" />
+            </span>
+          </span>
+          Web Pokédex
+        </Link>
+        <nav aria-label="Main">
+          <ul className="menuHeader">
             <li>
-              <NavLink className="linkNavbar" to="/" onClick={handleHomeClick}>
-                Home
-              </NavLink>
-            </li>
-            <li>
-              <a className="linkNavbar" href="https://pokeapi.co/">
-                API
-              </a>
-            </li>
-            <li>
-              <a
+              <NavLink
                 className="linkNavbar"
-                href="https://wiki.pokemoncentral.it/Elenco_dei_Pok%C3%A9mon_secondo_il_Pok%C3%A9dex_Nazionale"
+                to={PATHS.HOME}
+                end
+                onClick={handleHomeClick}
               >
-                Pokedex
-              </a>
-            </li>
-            <li>
-              <NavLink className="linkNavbar" to="/pokemonTeam">
-                Pokemon Team
+                Pokédex
               </NavLink>
             </li>
-          </div>
-          <div className="navBarDiv">
             <li>
-              <NavLink className="linkNavbar" to="/about">
+              <NavLink className="linkNavbar" to={PATHS.POKEMON_TEAM}>
+                My team{" "}
+                <span className="team-count">
+                  {teamPokemon.length}/{MAX_TEAM_SIZE}
+                </span>
+              </NavLink>
+            </li>
+            <li>
+              <NavLink className="linkNavbar" to={PATHS.ABOUT}>
                 About
               </NavLink>
             </li>
-          </div>
-        </ul>
-      </nav>
-    </>
+          </ul>
+        </nav>
+      </div>
+    </header>
   );
 }

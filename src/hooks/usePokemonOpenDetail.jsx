@@ -1,24 +1,24 @@
 import { useState } from "react";
-import { toast } from "react-toastify";
+import { trackedFetch } from "../utils/loadingTracker";
 
+// loads the details of a card only the first time it is opened
 export function usePokemonOpenDetails(pokemon) {
   const [detail, setDetail] = useState(null);
-  const [loading, setLoading] = useState(true);
+  const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
 
   async function fetchDetail() {
-    if (detail !== null) return;
+    if (detail !== null || loading) return;
+    setLoading(true);
+    setError(null);
     try {
-      const response = await fetch(pokemon.url);
+      const response = await trackedFetch(pokemon.url);
       if (!response.ok) {
-        throw new Error("errore: " + response.status);
+        throw new Error(`PokeAPI answered with error ${response.status}.`);
       }
-      const data = await response.json();
-
-      setDetail(data);
+      setDetail(await response.json());
     } catch (error) {
       setError(error);
-      toast.error(error.message);
     } finally {
       setLoading(false);
     }

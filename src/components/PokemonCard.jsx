@@ -1,80 +1,92 @@
 import { useContext, useState } from "react";
 import { Link } from "react-router";
-import { TeamContext } from "/src/context/TeamContext";
+import { TeamContext } from "../context/TeamContext";
 import { usePokemonOpenDetails } from "../hooks/usePokemonOpenDetail";
 import { buildDinamicPath } from "../routes/paths";
+import {
+  formatHeight,
+  formatPokedexNumber,
+  formatWeight,
+  getIdFromUrl,
+  getSpriteUrl,
+} from "../utils/pokemon";
+import { TypeBadges } from "./TypeBadges";
 
 export function PokemonCard({ pokemon }) {
   const [isOpen, setOpen] = useState(false);
   const { addPokemonToTeam } = useContext(TeamContext);
   const { detail, loading, error, fetchDetail } =
     usePokemonOpenDetails(pokemon);
+  const id = getIdFromUrl(pokemon.url);
+  const panelId = `details-${pokemon.name}`;
 
   function handleClick() {
-    fetchDetail(pokemon);
+    fetchDetail();
     setOpen(!isOpen);
   }
 
   return (
-    <li className="pokemonCard">
-      <ul>
-        <div className="nomePokemonCard" onClick={handleClick}>
-          <li>
-            <b>name: </b>
-            {pokemon.name}
-          </li>
-          <button>
-            <img
-              className="expand"
-              src="/src/assets/icons8-expand-arrow-96.png"
-              alt="expand"
-            />
-          </button>
-        </div>
-        {error ? (
-          <div className="errorFetchCardOpen">
-            <p>something go wrong</p>
-            <p>{error.message}</p>
-          </div>
-        ) : (
-          isOpen &&
-          !loading && (
-            <div className="cardIsOpen">
-              <li>
-                <b>height: </b> {detail.height * 10 + "cm"}
-              </li>
-              <li>
-                <b>weight: </b> {detail.weight / 10 + "kg"}
-              </li>
-              <li>
-                <b>type: </b>
-                <ul>
-                  {detail.types.map((t, index) => {
-                    return (
-                      <li key={index}>
-                        {index + 1} - {t.type.name}
-                      </li>
-                    );
-                  })}
-                </ul>
-              </li>
-              <li>
-                <img src={detail.sprites.front_default} alt="image-pokemon" />
-              </li>
-              <li className="bottomPokemonCardButtons">
-                <button onClick={() => addPokemonToTeam(detail)}>+</button>
-                {/* passo nell'url l'id del pokemon */}
+    <article className={isOpen ? "pokemonCard isOpen" : "pokemonCard"}>
+      <span className="pokedexNumber">{formatPokedexNumber(id)}</span>
+      <img
+        className="cardSprite"
+        src={getSpriteUrl(id)}
+        alt=""
+        width="96"
+        height="96"
+        loading="lazy"
+      />
+      <h2 className="pokemonName">{pokemon.name}</h2>
+      <button
+        type="button"
+        className="expandButton"
+        onClick={handleClick}
+        aria-expanded={isOpen}
+        aria-controls={panelId}
+      >
+        {isOpen ? "Hide details" : "Show details"}
+      </button>
+
+      {isOpen && (
+        <div className="cardIsOpen" id={panelId}>
+          {loading && <p className="cardMessage">Loading…</p>}
+          {error && (
+            <p className="cardMessage errorText" role="alert">
+              Details could not be loaded. Try again later.
+            </p>
+          )}
+          {detail && (
+            <>
+              <TypeBadges types={detail.types} />
+              <dl className="cardFacts">
+                <div>
+                  <dt>Height</dt>
+                  <dd>{formatHeight(detail.height)}</dd>
+                </div>
+                <div>
+                  <dt>Weight</dt>
+                  <dd>{formatWeight(detail.weight)}</dd>
+                </div>
+              </dl>
+              <div className="bottomPokemonCardButtons">
+                <button
+                  type="button"
+                  className="primaryButton"
+                  onClick={() => addPokemonToTeam(detail)}
+                >
+                  Add to team
+                </button>
                 <Link
-                  className="backButton"
+                  className="secondaryButton"
                   to={buildDinamicPath.pokemonDetail(detail.id)}
                 >
-                  info
+                  Full profile
                 </Link>
-              </li>
-            </div>
-          )
-        )}
-      </ul>
-    </li>
+              </div>
+            </>
+          )}
+        </div>
+      )}
+    </article>
   );
 }
